@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 #include <dirent.h>
 #include <stdlib.h>
 #include <string.h>
@@ -45,6 +46,7 @@ PATH_DIR	*add_path(PATH_DIR **h, const char *str);
 char		*_getenv(const char *key);
 void		getdir(void);
 void		create_linkedlist(void);
+void		find_in_cwd(int argc, char **argv);
 char		*_strdup(char *str);
 void		free_list(linked *h);
 int		_setenv(const char *name, const char *value, int overwrite);

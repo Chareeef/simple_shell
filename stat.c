@@ -1,21 +1,11 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <dirent.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
+#include "main.h"
 
 /**
- * main - entry point
+ * find_in_cwd - find files in current working directory
  * @argc: arguments count
- * @argv: arguments
- * Return: 0
+ * @argv: arguments vector
  */
-
-int main(int argc, char **argv)
+void find_in_cwd(int argc, char **argv)
 {
 	char path[1024];
 	struct stat status;
