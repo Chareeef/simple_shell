@@ -49,5 +49,6 @@ char		*_strdup(char *str);
 void		free_list(linked *h);
 int		_setenv(const char *name, const char *value, int overwrite);
 int		_unsetenv(const char *name);
+void		check_files(int argc, char **argv);
 
 #endif
