@@ -1,17 +1,12 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <string.h>
+#include "main.h"
 
 /**
- * main - entry point
+ * check_files - looks for files in the current PATH
  * @argc: arguments count
  * @argv: arguments
- * Return: 0
  */
 
-int main(int argc, char **argv)
+void	check_files(int argc, char **argv)
 {
 	int		i;
 	char		cwd[1024];
@@ -40,5 +35,4 @@ int main(int argc, char **argv)
 	{
 		printf("Usage: %s filename ...\n", argv[0]);
 	}
-	return (0);
 }
