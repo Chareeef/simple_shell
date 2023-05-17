@@ -1,19 +1,20 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include "main.h"
+
 /**
- * search_exec -
+ * search_exec - search for executable
+ * @first_arg: first arg
+ * Return: executable file, or NULL
  */
+
 char	*search_exec(char *first_arg)
 {
 	char	*env_path;
 	char	*path_dir;
 	char	*exec_file;
 	char	buffer[1024];
-	struct stat status;
+	struct	stat status;
 
-	env_path = strdup(_getenv("PATH"));
+	env_path = _strdup(_getenv("PATH"));
 	path_dir = strtok(env_path, ":");
 	while (path_dir != NULL)
 	{
@@ -28,5 +29,7 @@ char	*search_exec(char *first_arg)
 		free(exec_file);
 		path_dir = strtok(NULL, ":");
 	}
+
+	free(env_path);
 	return (NULL);
 }

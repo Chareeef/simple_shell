@@ -9,7 +9,14 @@
 int execute_command(char *argv[])
 {
 	int	id;
+	struct stat status;
 	/* char	*path; */
+
+	if (stat(argv[0], &status) != 0)
+	{
+		perror("./shell");
+		return (-1);
+	}
 
 	id = fork();
 	if (id == 0)
