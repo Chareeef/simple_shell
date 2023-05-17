@@ -39,6 +39,7 @@ typedef	struct	linked
 	struct linked *last;
 } linked;
 
+int		main(void);
 int		execute_command(char *argv[]);
 void		free_all(char *line, char **tokens_list);
 int		build_path_list(PATH_DIR **head);
