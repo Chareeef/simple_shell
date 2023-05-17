@@ -12,12 +12,15 @@ char	*search_exec(char *first_arg)
 	char	*exec_file;
 	char	buffer[1024];
 	struct stat status;
+	int	i;
 
 	env_path = _getenv("PATH");
 	path_dir = strtok(env_path, ":");
 	while (path_dir != NULL)
 	{
-		buffer[0] = '\0';
+		for (i = 0; i < 1024; i++)
+			buffer[i] = '\0';
+
 		strcat(buffer, path_dir);
 		strcat(buffer, "/");
 		strcat(buffer, first_arg);
@@ -25,9 +28,9 @@ char	*search_exec(char *first_arg)
 		strncpy(exec_file, buffer, strlen(buffer) + 1);
 		if (stat(exec_file, &status) == 0)
 			return (exec_file);
+		free(exec_file);
 		path_dir = strtok(NULL, ":");
 	}
 
-	free(exec_file);
 	return (NULL);
 }

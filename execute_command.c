@@ -15,7 +15,7 @@ int execute_command(char *argv[])
 	if (stat(argv[0], &status) != 0)
 	{
 		perror("./shell");
-		exit(-1);
+		return (-1);
 	}
 
 	id = fork();
