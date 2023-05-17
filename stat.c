@@ -29,5 +29,4 @@ void find_in_cwd(int argc, char **argv)
 			printf("%s: Nothing\n", argv[i]);
 		i++;
 	}
-	return (0);
 }
