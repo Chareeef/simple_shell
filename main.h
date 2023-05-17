@@ -10,13 +10,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
+#include <limits.h>
+
+extern char **environ;
 
 /**
  * struct PATH_DIR - path of directory
  * @name: name of directory
- * @next: next
+ * @next: next path
  */
-
 typedef struct PATH_DIR
 {
 	char *name;
@@ -24,13 +26,12 @@ typedef struct PATH_DIR
 } PATH_DIR;
 
 /**
- * struct linked - ..
- * @dir: ..
- * @first: ..
- * @next: ..
- * @last: ..
+ * struct linked - a single directory node
+ * @dir: directory's name
+ * @first: first directory
+ * @next: next directory
+ * @last: last directory
  */
-
 typedef	struct	linked
 {
 	char	*dir;
@@ -39,7 +40,8 @@ typedef	struct	linked
 	struct linked *last;
 } linked;
 
-int		main(void);
+/* FUNCTIONS PROTOTYPES */
+
 int		execute_command(char *argv[]);
 void		free_all(char *line, char **tokens_list);
 int		build_path_list(PATH_DIR **head);
