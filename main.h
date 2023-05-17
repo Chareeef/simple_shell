@@ -11,6 +11,8 @@
 #include <string.h>
 #include <stdarg.h>
 
+extern char **environ;
+
 /**
  * struct PATH_DIR - path of directory
  * @name: name of directory

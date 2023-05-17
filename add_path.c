@@ -41,4 +41,3 @@ PATH_DIR *add_path(PATH_DIR **h, const char *name)
 
 	return (new);
 }
-
