@@ -8,6 +8,7 @@
 int main(void)
 {
 	char *line;
+	char *path;
 	char **tokens_list;
 
 	while (1)
@@ -21,12 +22,23 @@ int main(void)
 			free_all(line, tokens_list);
 			exit(EXIT_SUCCESS);
 		} */
-		if (find_command(tokens_list[0]))
+		if (!strchr(tokens_list[0], '/'))
 		{
-			execute_command(tokens_list);
+			path = search_exec(tokens_list[0]);
+			if (path)
+			{
+				free(tokens_list[0]);
+				tokens_list[0] = path;
+			}
+			else
+			{
+				perror("./shell");
+				continue;
+			}
 		}
+		execute_command(tokens_list);
 		free_all(line, tokens_list);
 	}
 	free_all(line, tokens_list);
-       	return (0);
+	return (0);
 }

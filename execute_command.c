@@ -12,11 +12,6 @@ int execute_command(char *argv[])
 	/* char	*path; */
 
 	id = fork();
-	if (id == -1)
-	{
-		perror("fork");
-		exit(EXIT_FAILURE);
-	}
 	if (id == 0)
 	{
 		/*path = _getenv("PATH");
@@ -27,8 +22,8 @@ int execute_command(char *argv[])
 		}*/
 		if (execve(argv[0], argv, NULL) == -1)
 		{
-			perror("execve");
-			exit(EXIT_FAILURE);
+			perror("./shell");
+			exit(-1);
 		}
 	}
 	else

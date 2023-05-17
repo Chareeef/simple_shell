@@ -8,8 +8,7 @@
 
 int build_path_list(PATH_DIR **head)
 {
-	/* char* path = _getenv("PATH"); */
-	char	*path = "usr/bin:/foo/bin:/foo/bar/bin:/bin";
+	char* path = _getenv("PATH");
 	char	*dir_name;
 
 	dir_name = strdup(strtok(path, ":"));
