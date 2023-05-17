@@ -26,12 +26,15 @@ char *prompt_command(void)
 {
 	char *line = NULL;
 	size_t n = 0;
+	int tty = 0;
 
-	printf("#cisfun$ ");
+	if (isatty(tty))
+		printf("#cisfun$ ");
 
 	if (getline(&line, &n, stdin) == -1)
 	{
-		printf("\n");
+		if (isatty(tty))
+			printf("\n");
 		exit(-1);
 	}
 	return (line);
@@ -75,52 +78,4 @@ char **split_str_to_arr(char *line)
 	}
 	tokens_list[i] = token;
 	return (tokens_list);
-}
-
-/**
- * main -  Entry point
- *
- * Return: Always 0
- */
-int main(void)
-{
-	char *line;
-	char **tokens_list;
-
-	if (non-interactive mode)
-	{
-		l3ibat dyalo;
-		while(man3ref hna chno ykon)
-		{
-			if (strcmp(line, "\n") == 0)
-				continue;
-			tokens_list = split_str_to_arr(line);
-			if (strcmp(tokens_list[0], "exit") == 0)
-			{
-				free_all(line, tokens_list);
-				exit(EXIT_SUCCESS);
-			}
-			execute_command(tokens_list);
-			free_all(line, tokens_list);
-		}
-	}
-	else
-	{
-		while (1)
-		{
-			line = prompt_command();
-			if (strcmp(line, "\n") == 0)
-				continue;
-			tokens_list = split_str_to_arr(line);
-			if (strcmp(tokens_list[0], "exit") == 0)
-			{
-				free_all(line, tokens_list);
-				exit(EXIT_SUCCESS);
-			}
-			execute_command(tokens_list);
-			free_all(line, tokens_list);
-		}
-	}
-	free_all(line, tokens_list);
-	return (0);
 }

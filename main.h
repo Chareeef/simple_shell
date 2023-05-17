@@ -14,8 +14,6 @@
 
 extern char **environ;
 
-extern char **environ;
-
 /**
  * struct PATH_DIR - path of directory
  * @name: name of directory
@@ -57,5 +55,7 @@ void		free_list(linked *h);
 int		_setenv(const char *name, const char *value, int overwrite);
 int		_unsetenv(const char *name);
 void		check_files(int argc, char **argv);
+char		*prompt_command(void);
+char		**split_str_to_arr(char *line);
 
 #endif
