@@ -16,12 +16,15 @@ int main(void)
 		if (strcmp(line, "\n") == 0)
 			continue;
 		tokens_list = split_str_to_arr(line);
-		if (strcmp(tokens_list[0], "exit") == 0)
+		/* if (strcmp(tokens_list[0], "exit") == 0)
 		{
 			free_all(line, tokens_list);
 			exit(EXIT_SUCCESS);
+		} */
+		if (find_command(tokens_list[0]))
+		{
+			execute_command(tokens_list);
 		}
-		execute_command(tokens_list);
 		free_all(line, tokens_list);
 	}
 	free_all(line, tokens_list);
