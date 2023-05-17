@@ -14,7 +14,8 @@ char	*search_exec(char *first_arg)
 	struct stat status;
 	int	i;
 
-	env_path = _getenv("PATH");
+	env_path = _strdup(_getenv("PATH"));
+	printf("%s\n", env_path);
 	path_dir = strtok(env_path, ":");
 	while (path_dir != NULL)
 	{
@@ -32,5 +33,6 @@ char	*search_exec(char *first_arg)
 		path_dir = strtok(NULL, ":");
 	}
 
+	free(env_path);
 	return (NULL);
 }
