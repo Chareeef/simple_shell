@@ -87,20 +87,40 @@ int main(void)
 	char *line;
 	char **tokens_list;
 
-	while (1)
+	if (non-interactive mode)
 	{
-		line = prompt_command();
-		if (strcmp(line, "\n") == 0)
-			continue;
-		tokens_list = split_str_to_arr(line);
-		if (strcmp(tokens_list[0], "exit") == 0)
+		l3ibat dyalo;
+		while(man3ref hna chno ykon)
 		{
+			if (strcmp(line, "\n") == 0)
+				continue;
+			tokens_list = split_str_to_arr(line);
+			if (strcmp(tokens_list[0], "exit") == 0)
+			{
+				free_all(line, tokens_list);
+				exit(EXIT_SUCCESS);
+			}
+			execute_command(tokens_list);
 			free_all(line, tokens_list);
-			exit(EXIT_SUCCESS);
 		}
-		execute_command(tokens_list);
-		free_all(line, tokens_list);
+	}
+	else
+	{
+		while (1)
+		{
+			line = prompt_command();
+			if (strcmp(line, "\n") == 0)
+				continue;
+			tokens_list = split_str_to_arr(line);
+			if (strcmp(tokens_list[0], "exit") == 0)
+			{
+				free_all(line, tokens_list);
+				exit(EXIT_SUCCESS);
+			}
+			execute_command(tokens_list);
+			free_all(line, tokens_list);
+		}
 	}
 	free_all(line, tokens_list);
-       	return (0);
+	return (0);
 }
