@@ -29,7 +29,7 @@ char *prompt_command(void)
 	int tty = 0;
 
 	if (isatty(tty))
-		printf("#cisfun$ ");
+		write(1, "#cisfun$ ", _strlen("#cisfun$ "));
 
 	if (getline(&line, &n, stdin) == -1)
 	{
