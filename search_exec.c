@@ -6,22 +6,20 @@
  *
  * Return: the executable file's absolute path, or NULL
  */
+
 char	*search_exec(char *first_arg)
 {
 	char	*env_path;
 	char	*path_dir;
 	char	*exec_file;
 	char	buffer[1024];
-	struct stat status;
-	int	i;
+	struct	stat status;
 
 	env_path = _strdup(_getenv("PATH"));
 	path_dir = strtok(env_path, ":");
 	while (path_dir != NULL)
 	{
-		for (i = 0; i < 1024; i++)
-			buffer[i] = '\0';
-
+		buffer[0] = '\0';
 		strcat(buffer, path_dir);
 		strcat(buffer, "/");
 		strcat(buffer, first_arg);

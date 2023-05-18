@@ -30,7 +30,7 @@ int execute_command(char *argv[])
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			perror("./shell");
-			exit(-1);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
