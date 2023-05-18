@@ -60,7 +60,7 @@ char		**split_str_to_arr(char *line);
 char		*search_exec(char *first_arg);
 int		builtin_exec(char **args, char *line);
 void		printenv(void);
-void		print_error(char *command);
+void		print_error(char *command, int istty);
 char		*_strcpy(char *dest, char *src);
 char		*_strncpy(char *dest, char *src, int n);
 int		_strlen(const char *s);

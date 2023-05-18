@@ -4,10 +4,9 @@
   * print_error - print error message
   * @command: first command line's argument
   */
-void print_error(char *command)
+void print_error(char *command, int istty)
 {
-	int	tty = 0;
-	if (isatty(tty))
+	if (istty)
 	{
 		write(2, program_name, _strlen(program_name));
                 write(2, ": ", 2);

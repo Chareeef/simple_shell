@@ -11,10 +11,11 @@ int execute_command(char *argv[])
 	int	id;
 	char *invalid = ": Not a valid executable\n";
 	struct stat file_info;
+	int	istty = 0;
 
 	if (stat(argv[0], &file_info) != 0)
 	{
-		print_error(argv[0]);
+		print_error(argv[0], istty);
 		return (-1);
 	}
 
