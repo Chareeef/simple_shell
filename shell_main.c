@@ -17,7 +17,7 @@ int main(void)
 		if (_strcmp(line, "\n") == 0)
 			continue;
 		tokens_list = split_str_to_arr(line);
-		if (builtin_exec(tokens_list))
+		if (builtin_exec(tokens_list, line))
 			continue;
 		if (!_strchr(tokens_list[0], '/'))
 		{
