@@ -6,11 +6,13 @@
 
 void printenv(void)
 {
-	char **env;
-	int i;
+	char	**env;
+	int	i = 0;
+	int	count = 0;
 
-	i = 0;
-	env = malloc(sizeof(environ));
+	while (environ[count])
+		count++;
+	env = malloc((count + 1) * sizeof(char *));
 	while (environ[i])
 	{
 		env[i] = _strdup(environ[i]);
@@ -22,6 +24,7 @@ void printenv(void)
 	i = 0;
 	while (environ[i])
 	{
+		free(env[i]);
 		i++;
 	}
 	free(env);
