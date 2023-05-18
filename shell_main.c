@@ -33,6 +33,7 @@ int main(void)
 			else
 			{
 				perror("./shell");
+				free(tokens_list[0]);
 				continue;
 			}
 		}
