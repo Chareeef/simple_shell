@@ -28,7 +28,10 @@ char	*search_exec(char *first_arg)
 		if (stat(exec_file, &status) == 0 && access(exec_file, X_OK) == 0)
 		{
 			if (S_ISREG(status.st_mode))
+			{
+				free(env_path);
 				return (exec_file);
+			}
 		}
 		free(exec_file);
 		path_dir = strtok(NULL, ":");
