@@ -23,6 +23,8 @@ int execute_command(char *argv[])
 	{
 		write(2, program_name, _strlen(program_name));
 		write(2, ": ", 2);
+		if (!istty)
+			write(2, "1: ", 3);
 		write(2, argv[0], _strlen(argv[0]));
 		write(2, invalid, _strlen(invalid));
 		return (-1);
