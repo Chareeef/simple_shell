@@ -20,11 +20,11 @@ char	*search_exec(char *first_arg)
 	while (path_dir != NULL)
 	{
 		buffer[0] = '\0';
-		strcat(buffer, path_dir);
-		strcat(buffer, "/");
-		strcat(buffer, first_arg);
-		exec_file = malloc((strlen(buffer) + 1) * sizeof(char));
-		strncpy(exec_file, buffer, strlen(buffer) + 1);
+		_strcat(buffer, path_dir);
+		_strcat(buffer, "/");
+		_strcat(buffer, first_arg);
+		exec_file = malloc((_strlen(buffer) + 1) * sizeof(char));
+		_strncpy(exec_file, buffer, _strlen(buffer) + 1);
 		if (stat(exec_file, &status) == 0 && access(exec_file, X_OK) == 0)
 			return (exec_file);
 		free(exec_file);

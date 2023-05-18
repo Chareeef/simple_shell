@@ -18,8 +18,8 @@ void	check_files(int argc, char **argv)
 		while (i < argc)
 		{
 			getcwd(cwd, sizeof(cwd));
-			strcat(cwd, "/");
-			strcat(cwd, argv[i]);
+			_strcat(cwd, "/");
+			_strcat(cwd, argv[i]);
 			if (stat(cwd, &status) == 0)
 			{
 				printf("%s Found\n", argv[i]);

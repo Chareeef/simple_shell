@@ -8,11 +8,11 @@
  */
 int	builtin_exec(char **args)
 {
-	if (strcmp(args[0], "exit") == 0)
+	if (_strcmp(args[0], "exit") == 0)
 	{
 		exit(EXIT_SUCCESS);
 	}
-	else if (strcmp(args[0], "env") == 0)
+	else if (_strcmp(args[0], "env") == 0)
 	{
 		printenv();
 		return (1);
