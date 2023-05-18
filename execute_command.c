@@ -18,7 +18,6 @@ int execute_command(char *argv[])
 		return (-1);
 	}
 
-	
 	if (!S_ISREG(file_info.st_mode) || !(file_info.st_mode & S_IXUSR))
 	{
 		write(2, invalid, _strlen(invalid));

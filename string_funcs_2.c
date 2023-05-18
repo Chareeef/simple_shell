@@ -23,7 +23,7 @@ char *_strdup(char *str)
 }
 
 /**
- * _strncp - compares at most the first n bytes of s1 and s2
+ * _strncmp - compares at most the first n bytes of s1 and s2
  * @s1: first string
  * @s2: second string
  * @n: limit number of bytes
