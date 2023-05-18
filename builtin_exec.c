@@ -6,6 +6,7 @@
  *
  * Return: 1 if the builtin is found and executed, 0 otherwise
  */
+
 int	builtin_exec(char **args)
 {
 	if (_strcmp(args[0], "exit") == 0)
