@@ -22,7 +22,16 @@ char *_strdup(char *str)
 	return (s);
 }
 
-int	_strncmp(char *s1, char *s2, int n)
+/**
+ * _strncmp - Compare two stringsi up to n characterss
+ * @s1: First string
+ * @s2: Second string
+ * @n: characters limit
+ *
+ * Return: 0 if identical, or the difference between
+ * the two first different characters.
+ */
+int	_strncmp(const char *s1, const char *s2, int n)
 {
 	int	i;
 
@@ -34,6 +43,7 @@ int	_strncmp(char *s1, char *s2, int n)
 		else
 			return (s1[i] - s2[i]);
 	}
+	return (s1[i] - s2[i]);
 }
 
 /**
