@@ -23,17 +23,18 @@ char *_strdup(char *str)
 }
 
 /**
- * _strncmp - Compare two stringsi up to n characterss
- * @s1: First string
- * @s2: Second string
- * @n: characters limit
+ * _strncp - compares at most the first n bytes of s1 and s2
+ * @s1: first string
+ * @s2: second string
+ * @n: limit number of bytes
  *
- * Return: 0 if identical, or the difference between
- * the two first different characters.
+ * Return: returns an integer less than, equal to,
+ * or greater than zero if the first n bytes of s1 is found, respectively,
+ * to be less than, to match, or be greater than the first n bytes of s2.
  */
-int	_strncmp(const char *s1, const char *s2, int n)
+int	_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n && (s1[i] || s2[i]))
@@ -45,6 +46,7 @@ int	_strncmp(const char *s1, const char *s2, int n)
 	}
 	return (s1[i] - s2[i]);
 }
+
 
 /**
  * _strcmp - Compare two strings
