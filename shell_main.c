@@ -17,11 +17,8 @@ int main(void)
 		if (strcmp(line, "\n") == 0)
 			continue;
 		tokens_list = split_str_to_arr(line);
-		/* if (strcmp(tokens_list[0], "exit") == 0)
-		{
-			free_all(line, tokens_list);
-			exit(EXIT_SUCCESS);
-		} */
+		if (builtin_exec(tokens_list))
+			continue;
 		if (!strchr(tokens_list[0], '/'))
 		{
 			path = search_exec(tokens_list[0]);

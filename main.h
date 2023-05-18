@@ -58,5 +58,7 @@ void		check_files(int argc, char **argv);
 char		*prompt_command(void);
 char		**split_str_to_arr(char *line);
 char		*search_exec(char *first_arg);
+int		builtin_exec(char **args);
+void		printenv(void);
 
 #endif

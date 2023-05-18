@@ -1,9 +1,10 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include "main.h"
+
 /**
- * search_exec -
+ * search_exec - look for executable file in the PATH
+ * @first_arg: first command line argument
+ *
+ * Return: the executable file's absolute path, or NULL
  */
 char	*search_exec(char *first_arg)
 {
@@ -15,7 +16,6 @@ char	*search_exec(char *first_arg)
 	int	i;
 
 	env_path = _strdup(_getenv("PATH"));
-	printf("%s\n", env_path);
 	path_dir = strtok(env_path, ":");
 	while (path_dir != NULL)
 	{
