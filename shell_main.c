@@ -18,7 +18,10 @@ int main(void)
 			continue;
 		tokens_list = split_str_to_arr(line);
 		if (builtin_exec(tokens_list, line))
+		{
+			free_all(line, tokens_list);
 			continue;
+		}
 		if (!_strchr(tokens_list[0], '/'))
 		{
 			path = search_exec(tokens_list[0]);
