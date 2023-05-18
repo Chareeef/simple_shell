@@ -14,7 +14,7 @@ char	*search_exec(char *first_arg)
 	char	*exec_file;
 	char	buffer[1024];
 	struct	stat status;
-	int	istty = 0;
+	int	istty = isatty(0);
 
 	env_path = _strdup(_getenv("PATH"));
 	path_dir = strtok(env_path, ":");
