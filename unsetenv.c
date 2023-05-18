@@ -10,10 +10,10 @@ int _unsetenv(const char *name)
 {
 	int i, keylen;
 
-	keylen = strlen(name);
+	keylen = _strlen(name);
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (strncmp(name, environ[i], keylen) == 0 && environ[i][keylen] == '=')
+		if (_strncmp(name, environ[i], keylen) == 0 && environ[i][keylen] == '=')
 		{
 			break;
 		}

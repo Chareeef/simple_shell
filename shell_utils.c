@@ -67,12 +67,12 @@ char **split_str_to_arr(char *line)
 	i = 0;
 	while (token)
 	{
-		tokens_list[i] = malloc((strlen(token) + 1) * sizeof(char));
+		tokens_list[i] = malloc((_strlen(token) + 1) * sizeof(char));
 		if (!tokens_list)
 		{
 			exit(-1);
 		}
-		strcpy(tokens_list[i], token);
+		_strcpy(tokens_list[i], token);
 		token = strtok(NULL, " \n");
 		i++;
 	}

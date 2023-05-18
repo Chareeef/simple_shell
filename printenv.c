@@ -19,8 +19,9 @@ void printenv(void)
 	env[i] = NULL;
 
 	i = 0;
-	while (env[i])
+	while (environ[i])
 	{
 		i++;
 	}
+	free(env);
 }

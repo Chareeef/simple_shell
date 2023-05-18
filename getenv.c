@@ -13,12 +13,12 @@ char	*_getenv(const char *key)
 	char		*ret;
 
 	i = 0;
-	keylen = strlen(key);
+	keylen = _strlen(key);
 	while (environ[i] != NULL)
 	{
-		if (!strncmp(environ[i], key, keylen) && environ[i][keylen] == '=')
+		if (!_strncmp(environ[i], key, keylen) && environ[i][keylen] == '=')
 		{
-			ret = strchr(environ[i], '=');
+			ret = _strchr(environ[i], '=');
 			if (ret != NULL)
 				return (ret + 1);
 			else

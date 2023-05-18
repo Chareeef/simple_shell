@@ -14,12 +14,12 @@ int main(void)
 	while (1)
 	{
 		line = prompt_command();
-		if (strcmp(line, "\n") == 0)
+		if (_strcmp(line, "\n") == 0)
 			continue;
 		tokens_list = split_str_to_arr(line);
 		if (builtin_exec(tokens_list))
 			continue;
-		if (!strchr(tokens_list[0], '/'))
+		if (!_strchr(tokens_list[0], '/'))
 		{
 			path = search_exec(tokens_list[0]);
 			if (path)

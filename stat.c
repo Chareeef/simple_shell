@@ -21,8 +21,8 @@ void find_in_cwd(int argc, char **argv)
 	while (i < argc)
 	{
 		getcwd(path, sizeof(path));
-		strcat(path, "/");
-		strcat(path, argv[i]);
+		_strcat(path, "/");
+		_strcat(path, argv[i]);
 		if (stat(path, &status) == 0)
 			printf("%s: Found\n", argv[i]);
 		else

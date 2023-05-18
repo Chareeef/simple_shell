@@ -14,24 +14,24 @@ int _setenv(const char *name, const char *value, int overwrite)
 	char new[_POSIX_NAME_MAX];
 	char *temp;
 
-	keylen = strlen(name);
+	keylen = _strlen(name);
 	found = 0;
 	for (i = 0; environ[i] != NULL && !found; i++)
 	{
-		if (strncmp(name, environ[i], keylen) == 0 && environ[i][keylen] == '=')
+		if (_strncmp(name, environ[i], keylen) == 0 && environ[i][keylen] == '=')
 		{
 			found = 1;
 			break;
 		}
 	}
 	new[0] = '\0';
-	strcat(new, name);
-	strcat(new, "=");
-	strcat(new, value);
+	_strcat(new, name);
+	_strcat(new, "=");
+	_strcat(new, value);
 
 	if (found && overwrite)
 	{
-		strncpy(environ[i], new, strlen(new) + 1);
+		strncpy(environ[i], new, _strlen(new) + 1);
 		return (0);
 	}
 
