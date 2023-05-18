@@ -2,15 +2,18 @@
 
 /**
  * main - Our shell entry point
+ * @ac: arguments count
+ * @av: arguments vector
  *
  * Return: Always 0
  */
-int main(void)
+int main(int ac __attribute__((unused)), char **av)
 {
 	char *line;
 	char *path;
 	char **tokens_list;
 
+	program_name = av[0];
 	while (1)
 	{
 		line = prompt_command();
@@ -35,7 +38,7 @@ int main(void)
 			}
 			else
 			{
-				perror("./shell");
+				print_error(tokens_list[0]);
 				free(tokens_list[0]);
 				continue;
 			}

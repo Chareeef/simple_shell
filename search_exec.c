@@ -32,6 +32,11 @@ char	*search_exec(char *first_arg)
 				free(env_path);
 				return (exec_file);
 			}
+			else
+			{
+				print_error(first_arg);
+			}
+
 		}
 		free(exec_file);
 		path_dir = strtok(NULL, ":");
