@@ -50,7 +50,6 @@ char		*_getenv(const char *key);
 void		getdir(void);
 void		create_linkedlist(void);
 void		find_in_cwd(int argc, char **argv);
-char		*_strdup(char *str);
 void		free_list(linked *h);
 int		_setenv(const char *name, const char *value, int overwrite);
 int		_unsetenv(const char *name);
@@ -60,5 +59,11 @@ char		**split_str_to_arr(char *line);
 char		*search_exec(char *first_arg);
 int		builtin_exec(char **args);
 void		printenv(void);
+char		*_strcpy(char *dest, char *src);
+char		*_strncpy(char *dest, char *src, int n);
+int		_strlen(char *s);
+char		*_strchr(char *s, char c);
+char		*_strdup(char *str);
+char		*_strcat(char *dest, char *src);
 
 #endif
