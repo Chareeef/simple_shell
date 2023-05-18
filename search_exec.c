@@ -26,7 +26,10 @@ char	*search_exec(char *first_arg)
 		exec_file = malloc((strlen(buffer) + 1) * sizeof(char));
 		strncpy(exec_file, buffer, strlen(buffer) + 1);
 		if (stat(exec_file, &status) == 0 && access(exec_file, X_OK) == 0)
-			return (exec_file);
+		{
+			if (S_ISREG(status.st_mode))
+				return (exec_file);
+		}
 		free(exec_file);
 		path_dir = strtok(NULL, ":");
 	}
