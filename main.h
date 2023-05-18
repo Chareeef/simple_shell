@@ -61,9 +61,10 @@ int		builtin_exec(char **args);
 void		printenv(void);
 char		*_strcpy(char *dest, char *src);
 char		*_strncpy(char *dest, char *src, int n);
-int		_strlen(char *s);
+int		_strlen(const char *s);
 char		*_strchr(char *s, char c);
 char		*_strdup(char *str);
-char		*_strcat(char *dest, char *src);
+char		*_strcat(char *dest, const char *src);
+int		_strcmp(char *s1, char *s2);
 
 #endif
