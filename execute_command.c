@@ -9,7 +9,7 @@
 int execute_command(char *argv[])
 {
 	int	id;
-	char *invalid = ": Not a valid executable\n";
+	/*char *invalid = "errno";*/
 	struct stat file_info;
 	int	istty = isatty(0);
 
@@ -21,12 +21,13 @@ int execute_command(char *argv[])
 
 	if (!S_ISREG(file_info.st_mode) || !(file_info.st_mode & S_IXUSR))
 	{
-		write(2, program_name, _strlen(program_name));
+		/*write(2, program_name, _strlen(program_name));
 		write(2, ": ", 2);
 		if (!istty)
 			write(2, "1: ", 3);
 		write(2, argv[0], _strlen(argv[0]));
-		write(2, invalid, _strlen(invalid));
+		write(2, invalid, _strlen(invalid));*/
+		perror(program_name);
 		return (-1);
 	}
 

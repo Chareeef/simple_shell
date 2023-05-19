@@ -11,6 +11,7 @@
 #include <string.h>
 #include <stdarg.h>
 #include <limits.h>
+#include <errno.h>
 
 extern char **environ;
 char *program_name;
