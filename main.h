@@ -63,7 +63,7 @@ int		builtin_exec(char **args, char *line);
 void		printenv(void);
 int		_putchar(char c);
 void		print_number(int n);
-void		print_error(char *command);
+void		print_error(char *command, int error);
 char		*_strcpy(char *dest, char *src);
 char		*_strncpy(char *dest, char *src, int n);
 int		_strlen(const char *s);
