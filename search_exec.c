@@ -34,7 +34,7 @@ char	*search_exec(char *first_arg)
 			}
 			else
 			{
-				print_error(first_arg);
+				print_error(first_arg, 1);
 			}
 
 		}
