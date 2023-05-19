@@ -73,5 +73,6 @@ char		*_strcat(char *dest, const char *src);
 int		_strcmp(char *s1, char *s2);
 int		_strncmp(const char *s1, const char *s2, size_t n);
 int		_atoi(char *s);
+int		builtin_exec2(char **args);
 
 #endif

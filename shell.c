@@ -24,7 +24,7 @@ int main(int ac __attribute__((unused)), char **av)
 			continue;
 		}
 		tokens_list = split_str_to_arr(line);
-		if (builtin_exec(tokens_list, line))
+		if (builtin_exec(tokens_list, line) || builtin_exec2(tokens_list))
 		{
 			free_all(line, tokens_list);
 			continue;
