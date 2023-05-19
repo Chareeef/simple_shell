@@ -11,10 +11,10 @@
 #include <string.h>
 #include <stdarg.h>
 #include <limits.h>
-#include <errno.h>
 
 extern char **environ;
 char *program_name;
+int count_error;
 
 /**
  * struct PATH_DIR - path of directory
@@ -61,7 +61,9 @@ char		**split_str_to_arr(char *line);
 char		*search_exec(char *first_arg);
 int		builtin_exec(char **args, char *line);
 void		printenv(void);
-void		print_error(char *command, int istty);
+int		_putchar(char c);
+void		print_number(int n);
+void		print_error(char *command);
 char		*_strcpy(char *dest, char *src);
 char		*_strncpy(char *dest, char *src, int n);
 int		_strlen(const char *s);

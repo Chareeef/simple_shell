@@ -12,10 +12,9 @@ int main(int ac __attribute__((unused)), char **av)
 	char *line;
 	char *path;
 	char **tokens_list;
-	int	istty;
 
 	program_name = av[0];
-	istty = isatty(0);
+	count_error = 1;
 	while (1)
 	{
 		line = prompt_command();
@@ -40,7 +39,7 @@ int main(int ac __attribute__((unused)), char **av)
 			}
 			else
 			{
-				print_error(tokens_list[0], istty);
+				print_error(tokens_list[0]);
 				free(tokens_list[0]);
 				continue;
 			}

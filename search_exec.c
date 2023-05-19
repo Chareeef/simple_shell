@@ -14,7 +14,6 @@ char	*search_exec(char *first_arg)
 	char	*exec_file;
 	char	buffer[1024];
 	struct	stat status;
-	int	istty = isatty(0);
 
 	env_path = _strdup(_getenv("PATH"));
 	path_dir = strtok(env_path, ":");
@@ -35,7 +34,7 @@ char	*search_exec(char *first_arg)
 			}
 			else
 			{
-				print_error(first_arg, istty);
+				print_error(first_arg);
 			}
 
 		}

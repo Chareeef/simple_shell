@@ -9,25 +9,22 @@
 int execute_command(char *argv[])
 {
 	int	id;
-	/*char *invalid = "errno";*/
 	struct stat file_info;
-	int	istty = isatty(0);
 
 	if (stat(argv[0], &file_info) != 0)
 	{
-		print_error(argv[0], istty);
+		print_error(argv[0]);
 		return (-1);
 	}
 
-	if (!S_ISREG(file_info.st_mode) || !(file_info.st_mode & S_IXUSR))
+	if ((file_info.st_mode & S_IXUSR) != 0)
 	{
-		/*write(2, program_name, _strlen(program_name));
-		write(2, ": ", 2);
-		if (!istty)
-			write(2, "1: ", 3);
-		write(2, argv[0], _strlen(argv[0]));
-		write(2, invalid, _strlen(invalid));*/
-		perror(program_name);
+		print_error(argv[0]);
+		return (-1);
+	}
+	if (S_ISREG(file_info.st_mode) != 0)
+	{
+		print_error(argv[0]);
 		return (-1);
 	}
 
