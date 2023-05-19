@@ -53,7 +53,7 @@ int	builtin_exec(char **args, char *line)
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
-		if(args[1] != NULL)
+		if (args[1] != NULL)
 		{
 			status = stat_to_int(args[1]);
 			if (status == -1)
@@ -74,6 +74,44 @@ int	builtin_exec(char **args, char *line)
 	{
 		printenv();
 		return (1);
+	}
+	return (0);
+}
+
+/**
+ * builtin_exec2 - look for builtin and execute it
+ * @args: command line arguments
+ *
+ * Return: 1 if the builtin is found and executed, 0 otherwise
+ */
+
+int	builtin_exec2(char **args)
+{
+	if (_strcmp(args[0], "setenv") == 0)
+	{
+		if (args[1] && args[2])
+		{
+			setenv(args[1], args[2], 1);
+			return (1);
+		}
+		else
+		{
+			write(2, "Usage: setenv VARIABLE VALUE\n", 29);
+			return (-1);
+		}
+	}
+	else if (_strcmp(args[0], "unsetenv") == 0)
+	{
+		if (args[1])
+		{
+			unsetenv(args[1]);
+			return (1);
+		}
+		else
+		{
+			write(2, "Usage: unsetenv VARIABLE\n", 25);
+			return (-1);
+		}
 	}
 	return (0);
 }

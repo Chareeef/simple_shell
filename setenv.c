@@ -31,7 +31,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 
 	if (found && overwrite)
 	{
-		strncpy(environ[i], new, _strlen(new) + 1);
+		_strncpy(environ[i], new, _strlen(new) + 1);
 		return (0);
 	}
 
