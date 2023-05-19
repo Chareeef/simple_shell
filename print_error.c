@@ -11,6 +11,7 @@ void print_error(char **commandline, char *command, int error)
 	char *permission_denied = ": Permission denied\n";
 	char *not_found = ": not found\n";
 	char *illegal_num = ": Illegal number: ";
+	static int count_error = 1;
 
 	write(2, program_name, _strlen(program_name));
 	write(2, ": ", 2);
