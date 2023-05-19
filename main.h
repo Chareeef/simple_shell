@@ -14,7 +14,6 @@
 
 extern char **environ;
 char *program_name;
-int count_error;
 
 /**
  * struct PATH_DIR - path of directory

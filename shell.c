@@ -14,7 +14,6 @@ int main(int ac __attribute__((unused)), char **av)
 	char **tokens_list;
 
 	program_name = av[0];
-	count_error = 1;
 	while (1)
 	{
 		line = prompt_command();
