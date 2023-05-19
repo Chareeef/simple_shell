@@ -1,50 +1,42 @@
 #include "main.h"
 
 /**
- * _atoi - Convert a string to an integer.
- * @s: The pointer to convert
+ * stat_to_int - Convert a status in a string to an integer.
+ * @s: The pointer to string to convert
  *
- * Return: A integer
+ * Return: A positive integer, -1 if any error
  */
 
-int    _atoi(char *s)
+int    stat_to_int(char *s)
 {
 	int		i;
-	unsigned int	result;
-	int		sign;
-	int		j;
+	unsigned int	status;
 
-	sign = 1;
 	i = 0;
-	result = 0;
-	j = 0;
+	status = 0;
+
+	if (strcmp(s, "-0") == 0)
+		return (0);
+	if (s[i] == '+')
+		i++;
 	while (s[i] != '\0')
 	{
-		while (s[i] == '\n' || s[i] == '\v' || s[i] == '\t'
-				|| s[i] == '\f' || s[i] == '\r' || s[i] == ' ')
-			i++;
-
-		if (s[i] == '-')
-		{
-			sign *= -1;
-		}
-		if (s[i] == '-' && s[i] == '+')
-		{
-			i++;
-		}
 		while ((s[i] >= '0' && s[i] <= '9'))
 		{
-			j = 1;
-			result = result * 10 + s[i] - '0';
+			status = status * 10 + s[i] - '0';
 			i++;
 		}
-		if (s[i] == '\0' || j == 1)
+		if (s[i] == '\0')
 		{
 			break;
 		}
+		if ((s[i] < '0' || s[i] > '9'))
+		{
+			return (-1);
+		}
 		i++;
 	}
-	return (result * sign);
+	return (status);
 }
 
 /**
@@ -63,7 +55,12 @@ int	builtin_exec(char **args, char *line)
 	{
 		if(args[1] != NULL)
 		{
-			status = _atoi(args[1]);
+			status = stat_to_int(args[1]);
+			if (status == -1)
+			{
+				print_error(args, args[0], 2);
+				return (1);
+			}
 			free_all(line, args);
 			exit(status);
 		}

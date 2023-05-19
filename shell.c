@@ -39,7 +39,7 @@ int main(int ac __attribute__((unused)), char **av)
 			}
 			else
 			{
-				print_error(tokens_list[0], 0);
+				print_error(tokens_list, tokens_list[0], 0);
 				free(tokens_list[0]);
 				continue;
 			}

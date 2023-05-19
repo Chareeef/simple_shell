@@ -63,7 +63,7 @@ int		builtin_exec(char **args, char *line);
 void		printenv(void);
 int		_putchar(char c);
 void		print_number(int n);
-void		print_error(char *command, int error);
+void		print_error(char **commandline, char *command, int error);
 char		*_strcpy(char *dest, char *src);
 char		*_strncpy(char *dest, char *src, int n);
 int		_strlen(const char *s);
@@ -72,6 +72,6 @@ char		*_strdup(char *str);
 char		*_strcat(char *dest, const char *src);
 int		_strcmp(char *s1, char *s2);
 int		_strncmp(const char *s1, const char *s2, size_t n);
-int		_atoi(char *s);
+int		stat_to_int(char *s);
 
 #endif
