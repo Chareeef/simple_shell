@@ -41,7 +41,7 @@ int _unsetenv(const char *name)
 	
 	free(environ[i]);
 
-	environ = _realloc(environ, vars * sizeof(char *), (vars - 1) * sizeof(char *));
+	environ = _realloc(environ, (vars + 1) * sizeof(char *), vars * sizeof(char *));
 
 	return (0);
 }
