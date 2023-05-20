@@ -53,7 +53,7 @@ int	builtin_exec(char **args, char *line)
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
-		else if (args[1] != NULL)
+		if (args[1] != NULL)
 		{
 			status = stat_to_int(args[1]);
 			if (status == -1)
@@ -89,7 +89,7 @@ int	builtin_exec2(char **args)
 {
 	if (_strcmp(args[0], "setenv") == 0)
 	{
-		if (args[1] && args[2] && !args[3])
+		if (args[1] && args[2])
 		{
 			_setenv(args[1], args[2], 1);
 			return (1);
