@@ -61,7 +61,7 @@ int	builtin_exec(char **args, char *line)
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
-		if (args[1] != NULL)
+		else if (args[1] != NULL)
 		{
 			status = _atoi(args[1]);
 			free_all(line, args);
