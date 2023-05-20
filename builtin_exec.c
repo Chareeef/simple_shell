@@ -63,6 +63,7 @@ int	builtin_exec(char **args, char *line)
 			}
 			for (i = 0; environ[i]; i++)
 				free(environ[i]);
+			free(environ);
 			free_all(line, args);
 			exit(status);
 		}
@@ -70,6 +71,7 @@ int	builtin_exec(char **args, char *line)
 		{
 			for (i = 0; environ[i]; i++)
 				free(environ[i]);
+			free(environ);
 			free_all(line, args);
 			exit(EXIT_SUCCESS);
 		}
