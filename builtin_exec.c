@@ -79,7 +79,7 @@ int	builtin_exec(char **args, char *line)
 }
 
 /**
- * builtin_exec2 - look for builtin and execute it
+r* builtin_exec2 - look for builtin and execute it
  * @args: command line arguments
  *
  * Return: 1 if the builtin is found and executed, 0 otherwise
@@ -89,9 +89,9 @@ int	builtin_exec2(char **args)
 {
 	if (_strcmp(args[0], "setenv") == 0)
 	{
-		if (args[1] && args[2])
+		if (args[1] && args[2] && !args[3])
 		{
-			setenv(args[1], args[2], 1);
+			_setenv(args[1], args[2], 1);
 			return (1);
 		}
 		else
@@ -102,9 +102,9 @@ int	builtin_exec2(char **args)
 	}
 	else if (_strcmp(args[0], "unsetenv") == 0)
 	{
-		if (args[1])
+		if (args[1] && !args[2])
 		{
-			unsetenv(args[1]);
+			_unsetenv(args[1]);
 			return (1);
 		}
 		else
