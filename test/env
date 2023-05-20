@@ -1,0 +1,5 @@
+setenv testkey val
+env
+setenv TZ val
+env
+exit
