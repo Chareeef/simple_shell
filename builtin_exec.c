@@ -49,7 +49,7 @@ int    stat_to_int(char *s)
 
 int	builtin_exec(char **args, char *line)
 {
-	int	status;
+	int	status, i;
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
@@ -61,11 +61,15 @@ int	builtin_exec(char **args, char *line)
 				print_error(args, args[0], 2);
 				return (1);
 			}
+			for (i = 0; environ[i]; i++)
+				free(environ[i]);
 			free_all(line, args);
 			exit(status);
 		}
 		else
 		{
+			for (i = 0; environ[i]; i++)
+				free(environ[i]);
 			free_all(line, args);
 			exit(EXIT_SUCCESS);
 		}
