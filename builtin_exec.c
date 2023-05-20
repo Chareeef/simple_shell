@@ -53,7 +53,7 @@ int	builtin_exec(char **args, char *line)
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
-		if (args[1] != NULL)
+		else if (args[1] != NULL)
 		{
 			status = stat_to_int(args[1]);
 			if (status == -1)
