@@ -9,6 +9,7 @@
 int _unsetenv(const char *name)
 {
 	int i, keylen;
+	char *temp = NULL;
 
 	keylen = _strlen(name);
 	for (i = 0; environ[i] != NULL; i++)
@@ -26,13 +27,21 @@ int _unsetenv(const char *name)
 
 	for (; environ[i] != NULL; i++)
 	{
+		temp = environ[i];
 		environ[i] = _strdup(environ[i + 1]);
 		if (!environ[i] && environ[i + 1])
 		{
 			write_error("Allocation Failed\n");
 			return (-1);
 		}
+		free(temp);
 	}
+	
+	free(environ[i]);
+
+	for (i = 1; environ[i] != NULL; i++)
+		i++;
+	environ = _realloc(environ, (i - 1) * sizeof(char *), i * sizeof(char *));
 
 	return (0);
 }

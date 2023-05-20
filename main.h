@@ -49,6 +49,7 @@ int		build_path_list(PATH_DIR **head);
 PATH_DIR	*add_path(PATH_DIR **h, const char *str);
 char		*_getenv(const char *key);
 char		**dup_environ();
+void		*_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void		getdir(void);
 void		create_linkedlist(void);
 void		find_in_cwd(int argc, char **argv);

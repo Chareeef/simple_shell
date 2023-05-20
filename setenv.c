@@ -12,7 +12,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 {
 	int i, keylen, found;
 	char new[_POSIX_NAME_MAX];
-	char *temp;
+	char *temp = NULL;
 
 	keylen = _strlen(name);
 	found = 0;
@@ -37,6 +37,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 
 	if (!found)
 	{
+		environ = _realloc(environ, i * sizeof(char *), (i + 1) * sizeof(char *));
 		temp = _strdup(new);
 		if (!temp)
 		{

@@ -1,4 +1,6 @@
 setenv testkey val
+setenv testkey1 val
+setenv testkey2 val
 env
 setenv TZ val
 env
