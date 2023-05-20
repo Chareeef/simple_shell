@@ -14,7 +14,6 @@ int main(int ac __attribute__((unused)), char **av)
 	char **tokens_list;
 
 	program_name = av[0];
-	count_error = 1;
 	while (1)
 	{
 		line = prompt_command();
@@ -39,7 +38,7 @@ int main(int ac __attribute__((unused)), char **av)
 			}
 			else
 			{
-				print_error(tokens_list[0], 0);
+				print_error(tokens_list, tokens_list[0], 0);
 				free(tokens_list[0]);
 				continue;
 			}

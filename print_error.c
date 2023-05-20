@@ -1,14 +1,17 @@
 #include "main.h"
 
 /**
- * print_error - print error message
+ * print_error - print principal error message
+ * @commandline: tokenized command line
  * @command: first command line's argument
  * @error: error type
  */
-void print_error(char *command, int error)
+void print_error(char **commandline, char *command, int error)
 {
 	char *permission_denied = ": Permission denied\n";
 	char *not_found = ": not found\n";
+	char *illegal_num = ": Illegal number: ";
+	static int count_error = 1;
 
 	write(2, program_name, _strlen(program_name));
 	write(2, ": ", 2);
@@ -19,6 +22,21 @@ void print_error(char *command, int error)
 		write(2, not_found, _strlen(not_found));
 	else if (error == 1)
 		write(2, permission_denied, _strlen(permission_denied));
+	else if (error == 2)
+	{
+		write(2, illegal_num, _strlen(illegal_num));
+		write(2, commandline[1], _strlen(commandline[1]));
+		_putchar('\n');
+	}
 
 	count_error++;
+}
+
+/**
+ * write_error - write error message into stderr
+ * @message: error message
+ */
+void write_error(char *message)
+{
+	write(2, message, _strlen(message));
 }
