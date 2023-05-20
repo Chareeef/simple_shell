@@ -38,6 +38,11 @@ int _setenv(const char *name, const char *value, int overwrite)
 	if (!found)
 	{
 		temp = _strdup(new);
+		if (!temp)
+		{
+			write_error("Allocation Failed\n");
+			return (-1);
+		}
 		environ[i] = temp;
 		free(temp);
 		environ[i + 1] = NULL;

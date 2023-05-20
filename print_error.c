@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_error - print error message
+ * print_error - print principal error message
  * @commandline: tokenized command line
  * @command: first command line's argument
  * @error: error type
@@ -30,4 +30,13 @@ void print_error(char **commandline, char *command, int error)
 	}
 
 	count_error++;
+}
+
+/**
+ * write_error - write error message into stderr
+ * @message: error message
+ */
+void write_error(char *message)
+{
+	write(2, message, _strlen(message));
 }

@@ -18,14 +18,20 @@ int _unsetenv(const char *name)
 			break;
 		}
 		if (!environ[i + 1])
+		{
+			write_error("Inexistant VARIABLE\n");
 			return (-1);
+		}
 	}
 
 	for (; environ[i] != NULL; i++)
 	{
 		environ[i] = _strdup(environ[i + 1]);
 		if (!environ[i] && environ[i + 1])
+		{
+			write_error("Allocation Failed\n");
 			return (-1);
+		}
 	}
 
 	return (0);
