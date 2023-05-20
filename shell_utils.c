@@ -26,7 +26,7 @@ char *prompt_command(void)
 {
 	char *line = NULL;
 	size_t n = 0;
-	int tty = 0;
+	int tty = 0, i;
 
 	if (isatty(tty))
 		write(1, "#cisfun$ ", _strlen("#cisfun$ "));
@@ -35,7 +35,11 @@ char *prompt_command(void)
 	{
 		if (isatty(tty))
 			printf("\n");
-		exit(-1);
+		for (i = 0; environ[i]; i++)
+			free(environ[i]);
+		free(environ);
+		free(line);
+		exit(EXIT_SUCCESS);
 	}
 	return (line);
 }

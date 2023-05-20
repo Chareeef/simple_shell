@@ -47,7 +47,6 @@ int main(int ac __attribute__((unused)), char **av)
 		execute_command(tokens_list);
 		free_all(line, tokens_list);
 	}
-	free_all(line, tokens_list);
-	free(environ);
+
 	return (0);
 }
