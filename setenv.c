@@ -13,6 +13,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 	int i, keylen, found;
 	char new[_POSIX_NAME_MAX];
 	char *temp = NULL;
+	int	vars = 0;
 
 	keylen = _strlen(name);
 	found = 0;
@@ -37,15 +38,17 @@ int _setenv(const char *name, const char *value, int overwrite)
 
 	if (!found)
 	{
-		environ = _realloc(environ, i * sizeof(char *), (i + 1) * sizeof(char *));
+		while (environ[vars] != NULL)
+			vars++;
+		environ = _realloc(environ, i * sizeof(char *), (vars + 2) * sizeof(char *));
 		temp = _strdup(new);
 		if (!temp)
 		{
 			write_error("Allocation Failed\n");
 			return (-1);
 		}
-		environ[i] = temp;
-		environ[i + 1] = NULL;
+		environ[vars] = temp;
+		environ[vars + 1] = NULL;
 	}
 
 	return (0);
