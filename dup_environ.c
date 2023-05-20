@@ -13,7 +13,7 @@ char **dup_environ()
 	for (i = 0; environ[i] != NULL; i++)
 		i++;
 
-	new_environ = malloc((i + 2) * sizeof(char *));
+	new_environ = malloc((i + 1) * sizeof(char *));
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
