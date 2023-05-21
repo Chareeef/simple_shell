@@ -11,21 +11,28 @@ void print_error(char **commandline, char *command, int error)
 	char *permission_denied = ": Permission denied\n";
 	char *not_found = ": not found\n";
 	char *illegal_num = ": Illegal number: ";
+	char *cd_error = ": can't cd to ";
 	static int count_error = 1;
 
-	write(2, program_name, _strlen(program_name));
-	write(2, ": ", 2);
+	write_error(program_name);
+	write_error(": ");
 	print_number(count_error);
-	write(2, ": ", 2);
-	write(2, command, _strlen(command));
+	write_error(": ");
+	write_error(command);
 	if (error == 0)
-		write(2, not_found, _strlen(not_found));
+		write_error(not_found);
 	else if (error == 1)
-		write(2, permission_denied, _strlen(permission_denied));
+		write_error(permission_denied);
 	else if (error == 2)
 	{
-		write(2, illegal_num, _strlen(illegal_num));
-		write(2, commandline[1], _strlen(commandline[1]));
+		write_error(illegal_num);
+		write_error(commandline[1]);
+		_putchar('\n');
+	}
+	else if (error == 3)
+	{
+		write_error(cd_error);
+		write_error(commandline[1]);
 		_putchar('\n');
 	}
 
