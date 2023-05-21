@@ -10,12 +10,12 @@
 
 int	cd(char **commandline, char *new_path)
 {
-	char	*current = _getenv("PWD");
+	char	*current = current = _getenv("PWD");
 	char	*previous = _strdup(_getenv("OLDPWD"));
 	char	*home = _getenv("HOME");
 	char	buff[1024];
-
-	if (!new_path)
+	
+if (!new_path)
 	{
 		chdir(home);
 	}
@@ -24,10 +24,9 @@ int	cd(char **commandline, char *new_path)
 		_setenv("OLDPWD", current, 1);
 		_setenv("PWD", previous, 1);
 		chdir(previous);
+		free(previous);
 		return (0);
 	}
-	else if (_strcmp(new_path, ".") == 0)
-		return (0);
 	else
 	{
 		if (chdir(new_path) == -1)
@@ -38,5 +37,6 @@ int	cd(char **commandline, char *new_path)
 	}
 	_setenv("OLDPWD", current, 1);
 	_setenv("PWD", getcwd(buff, sizeof(buff)), 1);
+	free(previous);
 	return (0);
 }
