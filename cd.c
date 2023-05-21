@@ -21,8 +21,13 @@ int	cd(char **commandline, char *new_path)
 	}
 	else if (_strcmp(new_path, "-") == 0)
 	{
+		_setenv("OLDPWD", current, 1);
+		_setenv("PWD", previous, 1);
 		chdir(previous);
+		return (0);
 	}
+	else if (_strcmp(new_path, ".") == 0)
+		return (0);
 	else
 	{
 		if (chdir(new_path) == -1)
@@ -31,7 +36,7 @@ int	cd(char **commandline, char *new_path)
 			return (-1);
 		}
 	}
+	_setenv("OLDPWD", current, 1);
 	_setenv("PWD", getcwd(buff, sizeof(buff)), 1);
-	_setenv("OLDPWD", previous, 1);
 	return (0);
 }
