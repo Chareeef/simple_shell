@@ -68,4 +68,3 @@ void write_program_name(char *program_name)
 
 	do_not_write = 0;
 }
-
