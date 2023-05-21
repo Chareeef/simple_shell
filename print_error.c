@@ -55,17 +55,17 @@ void write_error(char *message)
 void write_program_name(char *program_name)
 {
 	static int init_name = 1;
-	static int if_write = 0;
-	static char *name = NULL;
+	static int do_not_write = 1;
+	static char name[1024];
 
 	if (init_name)
 	{
-		name = program_name;
+		_strncpy(name, program_name, _strlen(program_name));
 		init_name = 0;
 	}
-	if (if_write)
+	if (!do_not_write)
 		write(2, name, _strlen(name));
 
-	if_write = 1;
+	do_not_write = 0;
 }
 
