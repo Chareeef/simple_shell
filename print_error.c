@@ -55,8 +55,8 @@ void write_error(char *message)
 void write_program_name(char *program_name)
 {
 	static int init_name = 1;
-	static int if_write = 0;
-	static char *name = NULL;
+	static int if_write;
+	static char *name;
 
 	if (init_name)
 	{
@@ -68,4 +68,3 @@ void write_program_name(char *program_name)
 
 	if_write = 1;
 }
-
