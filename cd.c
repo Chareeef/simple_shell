@@ -14,8 +14,8 @@ int	cd(char **commandline, char *new_path)
 	char	*previous = _strdup(_getenv("OLDPWD"));
 	char	*home = _getenv("HOME");
 	char	buff[1024];
-	
-if (!new_path)
+
+	if (!new_path)
 	{
 		chdir(home);
 	}

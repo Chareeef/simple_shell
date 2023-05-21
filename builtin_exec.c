@@ -46,7 +46,7 @@ int	builtin_exec(char **args, char *line)
 }
 
 /**
-r* builtin_exec2 - look for builtin and execute it
+ * builtin_exec2 - look for builtin and execute it
  * @args: command line arguments
  *
  * Return: 1 if the builtin is found and executed, 0 otherwise
@@ -134,5 +134,3 @@ int    stat_to_int(char *s)
 	}
 	return (status);
 }
-
-

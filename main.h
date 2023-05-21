@@ -12,9 +12,8 @@
 #include <stdarg.h>
 #include <limits.h>
 
-extern char **environ;
-char *program_name;
-
+extern char	**environ;
+char		*program_name;
 /**
  * struct PATH_DIR - path of directory
  * @name: name of directory
