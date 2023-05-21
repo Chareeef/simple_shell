@@ -13,7 +13,7 @@ int _unsetenv(const char *name)
 
 	keylen = _strlen(name);
 
-	for (vars = 0; environ[vars]; vars++);
+	for (vars = 0; environ[vars]; vars++)
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		if (_strncmp(name, environ[i], keylen) == 0 && environ[i][keylen] == '=')
@@ -38,10 +38,10 @@ int _unsetenv(const char *name)
 		}
 		free(temp);
 	}
-	
 	free(environ[i]);
 
-	environ = _realloc(environ, (vars + 1) * sizeof(char *), vars * sizeof(char *));
+	environ = _realloc(environ, (vars + 1) * sizeof(char *),
+			vars * sizeof(char *));
 
 	return (0);
 }
