@@ -80,6 +80,19 @@ int	builtin_exec2(char **args)
 			return (-1);
 		}
 	}
+	else if (_strcmp(args[0], "cd") == 0)
+	{
+		if (!args[2])
+		{
+			cd(args, args[1]);
+			return (1);
+		}
+		else
+		{
+			write_error("Usage: cd [DIRECTORY]\n");
+			return (-1);
+		}
+	}
 	return (0);
 }
 
