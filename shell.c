@@ -13,8 +13,7 @@ int main(int ac __attribute__((unused)), char **av)
 	char *path;
 	char **tokens_list;
 
-	program_name = av[0];
-	environ = dup_environ();
+	write_program_name(av[0]);
 	while (1)
 	{
 		line = prompt_command();
