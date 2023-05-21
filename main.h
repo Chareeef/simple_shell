@@ -13,7 +13,6 @@
 #include <limits.h>
 
 extern char **environ;
-char *program_name;
 
 /**
  * struct PATH_DIR - path of directory
@@ -66,6 +65,7 @@ void		printenv(void);
 int		_putchar(char c);
 void		print_number(int n);
 void		print_error(char **commandline, char *command, int error);
+void		write_program_name(char *program_name);
 void		write_error(char *message);
 char		*_strcpy(char *dest, char *src);
 char		*_strncpy(char *dest, char *src, int n);

@@ -14,7 +14,7 @@ void print_error(char **commandline, char *command, int error)
 	char *cd_error = ": can't cd to ";
 	static int count_error = 1;
 
-	write_error(program_name);
+	write_program_name(NULL);
 	write_error(": ");
 	print_number(count_error);
 	write_error(": ");
@@ -47,3 +47,25 @@ void write_error(char *message)
 {
 	write(2, message, _strlen(message));
 }
+
+/**
+ * write_program_name - write program's name into stderr
+ * @program_name: program's name
+ */
+void write_program_name(char *program_name)
+{
+	static int init_name = 1;
+	static int if_write = 0;
+	static char *name = NULL;
+
+	if (init_name)
+	{
+		name = program_name;
+		init_name = 0;
+	}
+	if (if_write)
+		write(2, name, _strlen(name));
+
+	if_write = 1;
+}
+
