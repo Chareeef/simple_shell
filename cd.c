@@ -6,15 +6,16 @@
  *
  * Return: 0 on Success, -1 otherwise
  */
+
+
 int	cd(char **commandline, char *new_path)
 {
 	char	*current = _getenv("PWD");
 	char	*previous = _getenv("OLDPWD");
 	char	*home = _getenv("HOME");
-	char	buff[1040];
+	char	buff[1024];
 
-	if (!new_path || _strcmp(new_path, "~") == 0
-			|| _strcmp(new_path, "~/") == 0)
+	if (!new_path)
 	{
 		chdir(home);
 	}
@@ -30,9 +31,7 @@ int	cd(char **commandline, char *new_path)
 			return (-1);
 		}
 	}
-
 	_setenv("PWD", getcwd(buff, sizeof(buff)), 1);
-	_setenv("OLDPWD", current, 1);
-
+	_setenv("OLDPWD", previous, 1);
 	return (0);
 }

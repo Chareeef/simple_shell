@@ -8,12 +8,16 @@
  *
  * Return: 0 on success, -1 otherwise.
  */
+
 int _setenv(const char *name, const char *value, int overwrite)
 {
 	int i, keylen, found;
-	char new[_POSIX_NAME_MAX];
+	char new[1024];
 	char *temp = NULL;
+	int	tty = 0;
 
+	if (!isatty(tty) || isatty(tty))
+	{
 	keylen = _strlen(name);
 	found = 0;
 	for (i = 0; environ[i] != NULL && !found; i++)
@@ -47,6 +51,6 @@ int _setenv(const char *name, const char *value, int overwrite)
 		environ[i] = temp;
 		environ[i + 1] = NULL;
 	}
-
+	}
 	return (0);
 }
