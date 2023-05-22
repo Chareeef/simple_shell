@@ -44,14 +44,10 @@ typedef	struct	linked
 
 int		execute_command(char *argv[]);
 void		free_all(char *line, char **tokens_list);
-int		build_path_list(PATH_DIR **head);
-PATH_DIR	*add_path(PATH_DIR **h, const char *str);
 char		*_getenv(const char *key);
 char		**dup_environ();
 void		*_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-void		getdir(void);
 void		create_linkedlist(void);
-void		find_in_cwd(int argc, char **argv);
 void		free_list(linked *h);
 int		cd(char **commandline, char *path);
 void		free_dup_environ(char **new_environ);
@@ -59,7 +55,6 @@ int		cd_exec(char **args);
 void		update_pwd();
 int		_setenv(const char *name, const char *value, int overwrite);
 int		_unsetenv(const char *name);
-void		check_files(int argc, char **argv);
 char		*prompt_command(void);
 char		**split_str_to_arr(char *line);
 char		*search_exec(char *first_arg);

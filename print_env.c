@@ -16,7 +16,8 @@ void printenv(void)
 	while (environ[i])
 	{
 		env[i] = _strdup(environ[i]);
-		printf("%s\n", env[i]);
+		write(1, env[i], _strlen(env[i]));
+		_putchar('\n');
 		i++;
 	}
 	env[i] = NULL;

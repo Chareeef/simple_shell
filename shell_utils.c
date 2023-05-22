@@ -34,7 +34,7 @@ char *prompt_command(void)
 	if (getline(&line, &n, stdin) == -1)
 	{
 		if (isatty(tty))
-			printf("\n");
+			_putchar('\n');
 		for (i = 0; environ[i]; i++)
 			free(environ[i]);
 		free(environ);
