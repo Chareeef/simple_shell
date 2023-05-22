@@ -52,7 +52,6 @@ void		free_list(linked *h);
 int		cd(char **commandline, char *path);
 void		free_dup_environ(char **new_environ);
 int		cd_exec(char **args);
-void		update_pwd();
 int		_setenv(const char *name, const char *value, int overwrite);
 int		_unsetenv(const char *name);
 char		*prompt_command(void);
