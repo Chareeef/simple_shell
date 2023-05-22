@@ -56,7 +56,7 @@ int	builtin_exec2(char **args)
 {
 	int	i;
 
-	for (i = 1; args[i] != NULL; i++)
+	for (i = 1; args[i] != NULL; i++);
 	if (_strcmp(args[0], "setenv") == 0)
 	{
 		if (args[1] && args[2])

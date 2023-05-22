@@ -10,11 +10,13 @@
 
 int	cd(char **commandline, char *new_path)
 {
-	char	*current = _getenv("PWD");
+	char	*current;
 	char	*previous = _strdup(_getenv("OLDPWD"));
 	char	*home = _getenv("HOME");
 	char	buff[1024];
+	char	buff2[1024];
 
+	current = getcwd(buff2, sizeof(buff2));
 	if (!new_path)
 	{
 		chdir(home);
