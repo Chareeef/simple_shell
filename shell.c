@@ -13,6 +13,10 @@ int main(int ac __attribute__((unused)), char **av)
 	char *path;
 	char **tokens_list;
 
+<<<<<<< HEAD
+=======
+	environ = dup_environ();
+>>>>>>> 16cdb1cc86371f90a6961aec9344c3bdfad5bf05
 	write_program_name(av[0]);
 	while (1)
 	{
