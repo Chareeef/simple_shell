@@ -24,7 +24,8 @@ int main(int ac __attribute__((unused)), char **av)
 			continue;
 		}
 		tokens_list = split_str_to_arr(line);
-		if (builtin_exec(tokens_list, line) || builtin_exec2(tokens_list))
+		if (builtin_exec(tokens_list, line) || builtin_exec2(tokens_list)
+				|| cd_exec(tokens_list))
 		{
 			free_all(line, tokens_list);
 			continue;
@@ -47,6 +48,5 @@ int main(int ac __attribute__((unused)), char **av)
 		execute_command(tokens_list);
 		free_all(line, tokens_list);
 	}
-
 	return (0);
 }
