@@ -33,12 +33,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 	if (new_size < old_size)
 	{
-		memcpy(new, ptr, new_size);
+		_memcpy(new, ptr, new_size);
 		free(ptr);
 	}
 	else if (new_size > old_size)
 	{
-		memcpy(new, ptr, old_size);
+		_memcpy(new, ptr, old_size);
 		free(ptr);
 	}
 	return (new);

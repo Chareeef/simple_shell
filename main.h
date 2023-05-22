@@ -58,6 +58,7 @@ char		*prompt_command(void);
 char		**split_str_to_arr(char *line);
 char		*search_exec(char *first_arg);
 int		builtin_exec(char **args, char *line);
+char		*_memcpy(char *dest, char *src, unsigned int n);
 void		printenv(void);
 int		_putchar(char c);
 void		print_number(int n);
