@@ -54,9 +54,6 @@ int	builtin_exec(char **args, char *line)
 
 int	builtin_exec2(char **args)
 {
-	int	i;
-
-	for (i = 1; args[i] != NULL; i++);
 	if (_strcmp(args[0], "setenv") == 0)
 	{
 		if (args[1] && args[2])
@@ -83,7 +80,26 @@ int	builtin_exec2(char **args)
 			return (-1);
 		}
 	}
-	else if (_strcmp(args[0], "cd") == 0)
+	return (0);
+}
+
+/**
+ * cd_exec - look for builtin and execute it
+ * @args: command line arguments
+ *
+ * Return: 1 if the builtin is found and executed, 0 otherwise
+ */
+
+int	cd_exec(char **args)
+{
+	int	i;
+
+	i = 1;
+	while (args[i] != NULL)
+	{
+		i++;
+	}
+	if (_strcmp(args[0], "cd") == 0)
 	{
 		if (i <= 2)
 		{
