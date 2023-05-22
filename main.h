@@ -50,7 +50,6 @@ void		*_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void		create_linkedlist(void);
 void		free_list(linked *h);
 int		cd(char **commandline, char *path);
-void		free_dup_environ(char **new_environ);
 int		cd_exec(char **args);
 int		_setenv(const char *name, const char *value, int overwrite);
 int		_unsetenv(const char *name);
@@ -58,6 +57,7 @@ char		*prompt_command(void);
 char		**split_str_to_arr(char *line);
 char		*search_exec(char *first_arg);
 int		builtin_exec(char **args, char *line);
+int		builtin_exec2(char **args);
 char		*_memcpy(char *dest, char *src, unsigned int n);
 void		printenv(void);
 int		_putchar(char c);
@@ -74,6 +74,5 @@ char		*_strcat(char *dest, const char *src);
 int		_strcmp(char *s1, char *s2);
 int		_strncmp(const char *s1, const char *s2, size_t n);
 int		stat_to_int(char *s);
-int		builtin_exec2(char **args);
 
 #endif
