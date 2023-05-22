@@ -54,6 +54,9 @@ int	builtin_exec(char **args, char *line)
 
 int	builtin_exec2(char **args)
 {
+	int	i;
+
+	for (i = 1; args[i] != NULL; i++)
 	if (_strcmp(args[0], "setenv") == 0)
 	{
 		if (args[1] && args[2])
@@ -82,7 +85,7 @@ int	builtin_exec2(char **args)
 	}
 	else if (_strcmp(args[0], "cd") == 0)
 	{
-		if (!args[2])
+		if (i <= 2)
 		{
 			cd(args, args[1]);
 			return (1);
