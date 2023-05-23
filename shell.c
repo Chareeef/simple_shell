@@ -9,7 +9,7 @@
  */
 int main(int ac __attribute__((unused)), char **av)
 {
-	char *line, *path, *comment;
+	char *line, *comment;
 	char **tokens_list;
 
 	environ = dup_environ();
@@ -24,9 +24,7 @@ int main(int ac __attribute__((unused)), char **av)
 		}
 		comment = _strchr(line, '#');
 		if (comment != NULL)
-		{
 			*comment = '\0';
-		}
 		tokens_list = split_str_to_arr(line);
 		if (builtin_exec(tokens_list, line) || builtin_exec2(tokens_list)
 				|| cd_exec(tokens_list))
@@ -36,13 +34,7 @@ int main(int ac __attribute__((unused)), char **av)
 		}
 		if (!_strchr(tokens_list[0], '/'))
 		{
-			path = search_exec(tokens_list[0]);
-			if (path)
-			{
-				free(tokens_list[0]);
-				tokens_list[0] = path;
-			}
-			else
+			if (!search_exec(tokens_list[0]))
 			{
 				print_error(tokens_list, tokens_list[0], 0);
 				free(tokens_list[0]);

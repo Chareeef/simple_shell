@@ -30,6 +30,8 @@ char	*search_exec(char *first_arg)
 			if (S_ISREG(status.st_mode))
 			{
 				free(env_path);
+				free(first_arg);
+				first_arg = _strdup(exec_file);
 				return (exec_file);
 			}
 			else
