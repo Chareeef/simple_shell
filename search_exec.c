@@ -32,6 +32,7 @@ char	*search_exec(char *first_arg)
 				free(env_path);
 				free(first_arg);
 				first_arg = _strdup(exec_file);
+				free(first_arg);
 				return (exec_file);
 			}
 			else
@@ -43,7 +44,7 @@ char	*search_exec(char *first_arg)
 		free(exec_file);
 		path_dir = strtok(NULL, ":");
 	}
-
+	free(first_arg);
 	free(env_path);
 	return (NULL);
 }
