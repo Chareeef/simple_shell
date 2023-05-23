@@ -39,4 +39,3 @@ void print_number(int n)
 		print_number((INT_MIN % 100) * -1);
 	}
 }
-

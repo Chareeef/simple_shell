@@ -14,10 +14,10 @@ int	builtin_exec(char **args, char *line)
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
-		if (args[1] != NULL && args[1][0] != '\0')
+		if (args[1] != NULL)
 		{
-			status = stat_to_int(args[1]);
-			if (status == 0 && args[1][0] != '0')
+			status = _atoi(args[1]);
+			if (status == -1)
 			{
 				print_error(args, args[0], 2);
 				return (1);
@@ -116,40 +116,39 @@ int	cd_exec(char **args)
 }
 
 /**
- * stat_to_int - Convert a status in a string to an integer.
- * @s: The pointer to string to convert
+ * _atoi - Convert string to integer
+ * @s: The string to convert
  *
- * Return: A positive integer, -1 if any error
+ * Return: the converted integer
  */
 
-int    stat_to_int(char *s)
+int	_atoi(char *s)
 {
-	int		i;
-	unsigned int	status;
+	int n = 0, d = 1, i = 0, m = 1;
 
-	i = 0;
-	status = 0;
-
-	if (_strcmp(s, "-0") == 0)
-		return (0);
-	if (s[i] == '+')
-		i++;
-	while (s[i] != '\0')
+	while ((s[i] < '0' || s[i] > '9') && s[i] != '\0')
 	{
-		while ((s[i] >= '0' && s[i] <= '9'))
-		{
-			status = status * 10 + s[i] - '0';
-			i++;
-		}
-		if (s[i] == '\0')
-		{
-			break;
-		}
-		if ((s[i] < '0' || s[i] > '9'))
-		{
-			return (-1);
-		}
+		if (s[i] == '-')
+			m *= -1;
 		i++;
 	}
-	return (status);
+	while (s[i] >= '0' && s[i] <= '9')
+		i++;
+	i--;
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		n += (s[i] - '0') * d;
+		if (d == 100000000)
+			n -= 1;
+		if (d < 1000000000)
+			d *= 10;
+		i -= 1;
+	}
+	if (n > 0 && m == -1)
+		n *= m;
+	if (d >= 100000000 && n > 0)
+		n += 1;
+	if (d >= 100000000 && n < 0)
+		n -= 1;
+	return (n);
 }
