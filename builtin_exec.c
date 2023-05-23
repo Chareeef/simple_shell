@@ -14,10 +14,10 @@ int	builtin_exec(char **args, char *line)
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
-		if (args[1] != NULL)
+		if (args[1] != NULL && args[1][0] != '\0')
 		{
 			status = stat_to_int(args[1]);
-			if (status == -1)
+			if (status == 0 && args[1][0] != '0')
 			{
 				print_error(args, args[0], 2);
 				return (1);
