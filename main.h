@@ -74,5 +74,6 @@ char		*_strcat(char *dest, const char *src);
 int		_strcmp(char *s1, char *s2);
 int		_strncmp(const char *s1, const char *s2, size_t n);
 int		stat_to_int(char *s);
+char		*_strtok(char *str, char *delims);
 
 #endif

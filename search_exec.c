@@ -41,7 +41,6 @@ char	*search_exec(char *first_arg)
 		free(exec_file);
 		path_dir = strtok(NULL, ":");
 	}
-
 	free(env_path);
 	return (NULL);
 }
