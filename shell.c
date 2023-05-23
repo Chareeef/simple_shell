@@ -9,8 +9,7 @@
  */
 int main(int ac __attribute__((unused)), char **av)
 {
-	char *line;
-	char *path;
+	char *line, *path, *comment;
 	char **tokens_list;
 
 	environ = dup_environ();
@@ -22,6 +21,11 @@ int main(int ac __attribute__((unused)), char **av)
 		{
 			free(line);
 			continue;
+		}
+		comment = _strchr(line, '#');
+		if (comment != NULL)
+		{
+			*comment = '\0';
 		}
 		tokens_list = split_str_to_arr(line);
 		if (builtin_exec(tokens_list, line) || builtin_exec2(tokens_list)
