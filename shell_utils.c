@@ -41,6 +41,18 @@ char *prompt_command(void)
 		free(line);
 		exit(EXIT_SUCCESS);
 	}
+	if (_strcmp(line, "..\n") == 0)
+	{
+		print_error(NULL, "..", 1);
+		free(line);
+		return (NULL);
+	}
+	else if (_strcmp(line, "\n") == 0 || line[0] == '#' ||
+			_strcmp(line, ".\n") == 0)
+	{
+		free(line);
+		return (NULL);
+	}
 	return (line);
 }
 

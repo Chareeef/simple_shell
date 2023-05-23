@@ -18,12 +18,8 @@ int main(int ac __attribute__((unused)), char **av)
 	while (1)
 	{
 		line = prompt_command();
-		if (_strcmp(line, "\n") == 0 || line[0] == '#' ||
-				_strcmp(line, ".\n") == 0)
-		{
-			free(line);
+		if (!line)
 			continue;
-		}
 		tokens_list = split_str_to_arr(line);
 		if (builtin_exec(tokens_list, line) || builtin_exec2(tokens_list)
 				|| cd_exec(tokens_list))
@@ -42,7 +38,7 @@ int main(int ac __attribute__((unused)), char **av)
 			else
 			{
 				print_error(tokens_list, tokens_list[0], 0);
-				free(tokens_list[0]);
+				free_all(line, tokens_list);
 				continue;
 			}
 		}
