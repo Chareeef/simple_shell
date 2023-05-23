@@ -1,6 +1,20 @@
 #include "main.h"
 
 /**
+ * comment - handles comment (#)
+ * @line: line
+ */
+
+void	comment(char *line)
+{
+	char	*comment;
+
+	comment = _strchr(line, '#');
+	if (comment != NULL)
+		*comment = '\0';
+}
+
+/**
  * main - Our shell entry point
  * @ac: arguments count
  * @av: arguments vector
@@ -9,7 +23,7 @@
  */
 int main(int ac __attribute__((unused)), char **av)
 {
-	char *line, *comment;
+	char *line, *path;
 	char **tokens_list;
 
 	environ = dup_environ();
@@ -22,9 +36,7 @@ int main(int ac __attribute__((unused)), char **av)
 			free(line);
 			continue;
 		}
-		comment = _strchr(line, '#');
-		if (comment != NULL)
-			*comment = '\0';
+		comment(line);
 		tokens_list = split_str_to_arr(line);
 		if (builtin_exec(tokens_list, line) || builtin_exec2(tokens_list)
 				|| cd_exec(tokens_list))
@@ -34,7 +46,13 @@ int main(int ac __attribute__((unused)), char **av)
 		}
 		if (!_strchr(tokens_list[0], '/'))
 		{
-			if (!search_exec(tokens_list[0]))
+			path = search_exec(tokens_list[0]);
+			if (path)
+			{
+				free(tokens_list[0]);
+				tokens_list[0] = path;
+			}
+			else
 			{
 				print_error(tokens_list, tokens_list[0], 0);
 				free(tokens_list[0]);
