@@ -12,6 +12,7 @@ void print_error(char **commandline, char *command, int error)
 	char *not_found = ": not found\n";
 	char *illegal_num = ": Illegal number: ";
 	char *cd_error = ": can't cd to ";
+	char	*dot = ": filename argument required :";
 	static int count_error = 1;
 
 	write_program_name(NULL);
@@ -35,7 +36,6 @@ void print_error(char **commandline, char *command, int error)
 		write_error(commandline[1]);
 		_putchar('\n');
 	}
-
 	count_error++;
 }
 

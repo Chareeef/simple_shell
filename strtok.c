@@ -10,52 +10,46 @@
 
 char	*_strtok(char *str, char *delims)
 {
-	static char *duplicated;
-	static char *last;
-	static char *temp;
-	
-	int i, j, found;
+	static char duplicated[1024];
+	static int track = 1;
+	static int not_yet = 1;
+	int i, j, found, previous_track;
 
 	if (str)
 	{
-		duplicated = _strdup(str);
-		if (!temp)
-			free(temp);
-		temp = duplicated;
+		track = 0;
+		not_yet = 1;
+		for (i = 0; i < 1024; i++)
+			duplicated[i] = '\0';
+		_strncpy(duplicated, str, 1024);
 	}
-	if (!duplicated)
+
+	if (!not_yet)
 		return (NULL);
-	last = duplicated;
+
+	previous_track = track;
 	found = 0;
 
-	for (i = 0; duplicated[i]; i++)
+	for (i = track; !found && duplicated[i]; i++)
 	{
 		for (j = 0; delims[j]; j++)
 		{
 			if (duplicated[i] == delims[j])
 			{
 				duplicated[i] = '\0';
-				duplicated = duplicated + i + 1;
 				found = 1;
+				track = i + 1;
 				break;
 			}
-			else if (!duplicated[i + 1])
-			{
-				duplicated = NULL;
-				return (last);
-			}
 		}
-
-		if (found)
-			break;
+		if (duplicated[i + 1] == '\0')
+			not_yet = 0;
 	}
-	/*if (duplicated == NULL)
-		free(temp);*/
 
-	return (last);
+	return (&duplicated[previous_track]);
 }
 
-/*int main(void)
+int main(void)
 {
 	char *str = "Hi.How are you;my bro?";
 	char *str2 = "re.fr.am ing;";
@@ -70,21 +64,22 @@ char	*_strtok(char *str, char *delims)
 			printf("Tooken: %s\n", tok);
 	}
 	printf("\n\t***\n\n");
-	printf("%s\n", _strtok(str2, " .;"));
+	tok = _strtok(str2, " .;");
 
+	printf("Tooken: %s\n", tok);
 	while (tok)
 	{
-		tok = _strtok(NULL, ", ;");
-		if (tok)	
+		tok = _strtok(NULL, ". ;");
+		if (tok)
 			printf("Tooken: %s\n", tok);
 	}
 
 
 	return (0);
-}*/
+}
 
-
-/*int main()
+/*
+int main()
 {
 	char	*str = "Hi.How are you;my bro?";
 	char	*str2 = "re.fr.am ing;";
