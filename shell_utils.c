@@ -53,11 +53,14 @@ char *prompt_command(void)
 char **split_str_to_arr(char *line)
 {
 	char **tokens_list;
-	char *token;
+	char *token, *comment;
 	int i, num;
 
 	i = 0;
 	num = 0;
+	comment = _strchr(line, '#');
+	if (comment != NULL)
+		*comment = '\0';
 	while (line[i])
 	{
 		if ((line[i] == ' ' && line[i + 1] != ' ') || line[i] == '\n')
