@@ -7,6 +7,7 @@
  *
  * Return: Always 0
  */
+
 int main(int ac __attribute__((unused)), char **av)
 {
 	char *line, *path;
@@ -17,7 +18,8 @@ int main(int ac __attribute__((unused)), char **av)
 	while (1)
 	{
 		line = prompt_command();
-		if (_strcmp(line, "\n") == 0)
+		if (_strcmp(line, "\n") == 0 || line[0] == '#' ||
+				_strcmp(line, ".\n") == 0)
 		{
 			free(line);
 			continue;

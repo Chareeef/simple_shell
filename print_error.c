@@ -35,7 +35,6 @@ void print_error(char **commandline, char *command, int error)
 		write_error(commandline[1]);
 		_putchar('\n');
 	}
-
 	count_error++;
 }
 
