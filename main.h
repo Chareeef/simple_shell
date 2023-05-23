@@ -8,7 +8,6 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdarg.h>
 #include <limits.h>
 
@@ -73,6 +72,7 @@ char		*_strdup(char *str);
 char		*_strcat(char *dest, const char *src);
 int		_strcmp(char *s1, char *s2);
 int		_strncmp(const char *s1, const char *s2, size_t n);
+char		*_strtok(char *str, char *delims);
 int		stat_to_int(char *s);
 
 #endif

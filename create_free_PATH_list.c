@@ -33,7 +33,7 @@ void	create_linkedlist(void)
 	first = NULL;
 	last = NULL;
 	path = _getenv("PATH");
-	token = _strdup(strtok(path, ":"));
+	token = _strdup(_strtok(path, ":"));
 	while (token != NULL)
 	{
 		new = malloc(sizeof(linked));
@@ -51,7 +51,7 @@ void	create_linkedlist(void)
 			last->next = new;
 			last = new;
 		}
-		token = _strdup(strtok(NULL, ":"));
+		token = _strdup(_strtok(NULL, ":"));
 	}
 	current = first;
 

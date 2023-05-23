@@ -130,7 +130,7 @@ int    stat_to_int(char *s)
 	i = 0;
 	status = 0;
 
-	if (strcmp(s, "-0") == 0)
+	if (_strcmp(s, "-0") == 0)
 		return (0);
 	if (s[i] == '+')
 		i++;
