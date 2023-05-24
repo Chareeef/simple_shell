@@ -13,7 +13,7 @@ char **split_str_to_arr(char *line)
 	int i = 0, j = 0, num = 0;
 
 	comment = _strchr(line, '#');
-	if (comment != NULL)
+	if (comment != NULL && *(comment - 1) == ' ')
 		*comment = '\0';
 	while (line[i])
 	{
