@@ -19,8 +19,8 @@ int	builtin_exec(char **args, char *line)
 			status = stat_to_int(args[1]);
 			if (status == -1)
 			{
-				write(2, "exit\n", 5);
 				print_error(args, args[0], 2);
+				return (1);
 			}
 			for (i = 0; environ[i]; i++)
 				free(environ[i]);
@@ -131,7 +131,7 @@ int    stat_to_int(char *s)
 	status = 0;
 	if (_strcmp(s, "-0") == 0)
 		return (0);
-	if (s[i] == '+')
+	else if (s[i] == '+')
 		i++;
 	while (s[i] != '\0')
 	{
