@@ -1,6 +1,20 @@
 #include "main.h"
 
 /**
+ * free_environ - free the environ
+ * @environ: the environ
+ */
+
+void	free_environ(char **environ)
+{
+	int	i;
+
+	for (i = 0; environ[i]; i++)
+		free(environ[i]);
+	free(environ);
+}
+
+/**
  * builtin_exec - look for builtin and execute it
  * @args: command line arguments
  * @line: command line
@@ -10,7 +24,7 @@
 
 int	builtin_exec(char **args, char *line)
 {
-	int	status, i;
+	int	status;
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
@@ -22,17 +36,13 @@ int	builtin_exec(char **args, char *line)
 				print_error(args, args[0], 2);
 				return (1);
 			}
-			for (i = 0; environ[i]; i++)
-				free(environ[i]);
-			free(environ);
+			free_environ(environ);
 			free_all(line, args);
 			exit(status);
 		}
 		else
 		{
-			for (i = 0; environ[i]; i++)
-				free(environ[i]);
-			free(environ);
+			free_environ(environ);
 			free_all(line, args);
 			exit(EXIT_SUCCESS);
 		}

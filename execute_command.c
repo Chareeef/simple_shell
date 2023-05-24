@@ -23,8 +23,8 @@ int execute_command(char *argv[])
 		return (-1);
 	}
 
-	id = fork();
-	if (id == 0)
+	/*id = fork();*/
+	if (fork() == 0)
 	{
 		if (execve(argv[0], argv, NULL) == -1)
 		{

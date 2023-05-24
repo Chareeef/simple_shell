@@ -7,6 +7,7 @@
  *
  * Return: a pointer to the next token
  */
+
 char	*_strtok(char *str, char *delims)
 {
 	static char duplicated[1024];
@@ -24,13 +25,10 @@ char	*_strtok(char *str, char *delims)
 		while (duplicated[track] == ' ')
 			track++;
 	}
-
 	if (!not_yet)
 		return (NULL);
-
 	previous_track = track;
 	found = 0;
-
 	for (i = track; !found && duplicated[i]; i++)
 	{
 		for (j = 0; delims[j]; j++)
@@ -48,6 +46,5 @@ char	*_strtok(char *str, char *delims)
 		if (duplicated[i + 1] == '\0')
 			not_yet = 0;
 	}
-
 	return (&duplicated[previous_track]);
 }
