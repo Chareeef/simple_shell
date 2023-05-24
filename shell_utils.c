@@ -23,19 +23,19 @@ char **split_str_to_arr(char *line)
 		i++;
 	}
 	tokens_list = malloc((num + 1) * sizeof(char *));
-	token = _strtok(line, " \'\"\n");
+	if (!tokens_list)
+		return (NULL);
+	token = _strtok(line, " \n");
 	if (_strcmp(token, "") == 0)
-		token = _strtok(NULL, " \'\"\n");
+		token = _strtok(NULL, " \n");
 	i = 0;
 	while (j < num)
 	{
 		tokens_list[i] = malloc((_strlen(token) + 1) * sizeof(char));
-		if (!tokens_list)
-		{
-			exit(-1);
-		}
+		if (!tokens_list[i])
+			return (NULL);
 		_strcpy(tokens_list[i], token);
-		token = _strtok(NULL, " \'\"\n");
+		token = _strtok(NULL, " \n");
 		i++;
 		j++;
 	}
@@ -96,5 +96,18 @@ char *prompt_command(void)
 		free(line);
 		return (NULL);
 	}
+
+	i = 0;
+
+	while (line[i] == ' ')
+	{
+		i++;
+		if (line[i + 1] == '\n')
+		{
+			free(line);
+			return (NULL);
+		}
+	}
+
 	return (line);
 }
