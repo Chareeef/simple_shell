@@ -10,7 +10,7 @@ char **split_str_to_arr(char *line)
 {
 	char **tokens_list;
 	char *token, *comment;
-	int i = 0, j = 0, num = 0;
+	int num = 0, i = 0, j;
 
 	comment = _strchr(line, '#');
 	if (comment != NULL && *(comment - 1) == ' ')
@@ -28,18 +28,13 @@ char **split_str_to_arr(char *line)
 	if (!tokens_list)
 		return (NULL);
 	token = _strtok(line, " \n");
-	if (_strcmp(token, "") == 0)
-		token = _strtok(NULL, " \n");
-	i = 0;
-	while (j < num)
+	for (i = 0, j = 0; j < num; i++, j++)
 	{
 		tokens_list[i] = malloc((_strlen(token) + 1) * sizeof(char));
 		if (!tokens_list[i])
 			return (NULL);
 		_strcpy(tokens_list[i], token);
 		token = _strtok(NULL, " \n");
-		i++;
-		j++;
 	}
 	tokens_list[i] = NULL;
 	return (tokens_list);
@@ -75,7 +70,6 @@ char *prompt_command(void)
 
 	if (isatty(tty))
 		write(1, "#cisfun$ ", _strlen("#cisfun$ "));
-
 	if (getline(&line, &n, stdin) == -1)
 	{
 		if (isatty(tty))
@@ -98,9 +92,7 @@ char *prompt_command(void)
 		free(line);
 		return (NULL);
 	}
-
 	i = 0;
-
 	while (line[i] == ' ')
 	{
 		i++;
