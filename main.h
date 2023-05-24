@@ -76,5 +76,6 @@ int		_strncmp(const char *s1, const char *s2, size_t n);
 char		*_strtok(char *str, char *delims);
 int		stat_to_int(char *s);
 char		*_strtok(char *str, char *delims);
+void		_sigint(int s __attribute__((unused)));
 
 #endif

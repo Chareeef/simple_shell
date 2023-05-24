@@ -17,6 +17,7 @@ int main(int ac __attribute__((unused)), char **av)
 	write_program_name(av[0]);
 	while (1)
 	{
+		signal(SIGINT, _sigint);
 		line = prompt_command();
 		if (!line)
 			continue;
