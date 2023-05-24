@@ -21,6 +21,8 @@ char	*_strtok(char *str, char *delims)
 		for (i = 0; i < 1024; i++)
 			duplicated[i] = '\0';
 		_strncpy(duplicated, str, 1024);
+		while (duplicated[track] == ' ')
+			track++;
 	}
 
 	if (!not_yet)
@@ -33,11 +35,13 @@ char	*_strtok(char *str, char *delims)
 	{
 		for (j = 0; delims[j]; j++)
 		{
-			if (duplicated[i] == delims[j])
+			while (duplicated[i] == delims[j])
 			{
 				duplicated[i] = '\0';
 				found = 1;
 				track = i + 1;
+				if (!delims[j + 1] &&
+						duplicated[i] != delims[j])
 				break;
 			}
 		}
