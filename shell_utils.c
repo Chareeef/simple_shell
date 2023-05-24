@@ -23,7 +23,9 @@ char **split_str_to_arr(char *line)
 		i++;
 	}
 	tokens_list = malloc((num + 1) * sizeof(char *));
-	token = _strtok(line, " \n");
+	token = _strtok(line, " \'\"\n");
+	if (_strcmp(token, "") == 0)
+		token = _strtok(NULL, " \'\"\n");
 	i = 0;
 	while (j < num)
 	{
@@ -33,7 +35,7 @@ char **split_str_to_arr(char *line)
 			exit(-1);
 		}
 		_strcpy(tokens_list[i], token);
-		token = _strtok(NULL, " \n");
+		token = _strtok(NULL, " \'\"\n");
 		i++;
 		j++;
 	}
