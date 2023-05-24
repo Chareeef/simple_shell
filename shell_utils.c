@@ -15,6 +15,8 @@ char **split_str_to_arr(char *line)
 	comment = _strchr(line, '#');
 	if (comment != NULL && *(comment - 1) == ' ')
 		*comment = '\0';
+	while (line[i] == ' ')
+		i++;
 	while (line[i])
 	{
 		if ((line[i] == ' ' && line[i + 1] != ' '
