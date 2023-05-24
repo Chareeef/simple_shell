@@ -1,6 +1,47 @@
 #include "main.h"
 
 /**
+ * split_str_to_arr - splits a string
+ * @line: line
+ * Return: array of each word of the string
+ */
+
+char **split_str_to_arr(char *line)
+{
+	char **tokens_list;
+	char *token, *comment;
+	int i = 0, j = 0, num = 0;
+
+	comment = _strchr(line, '#');
+	if (comment != NULL)
+		*comment = '\0';
+	while (line[i])
+	{
+		if ((line[i] == ' ' && line[i + 1] != ' '
+					&& line[i + 1] != '\n') || line[i] == '\n')
+			num++;
+		i++;
+	}
+	tokens_list = malloc((num + 1) * sizeof(char *));
+	token = _strtok(line, " \n");
+	i = 0;
+	while (j < num)
+	{
+		tokens_list[i] = malloc((_strlen(token) + 1) * sizeof(char));
+		if (!tokens_list)
+		{
+			exit(-1);
+		}
+		_strcpy(tokens_list[i], token);
+		token = _strtok(NULL, " \n");
+		i++;
+		j++;
+	}
+	tokens_list[i] = NULL;
+	return (tokens_list);
+}
+
+/**
  * free_all - frees all allocations
  * @line: line
  * @tokens_list: tokens list
@@ -54,43 +95,4 @@ char *prompt_command(void)
 		return (NULL);
 	}
 	return (line);
-}
-
-/**
- * split_str_to_arr - splits a string
- * @line: line
- * Return: array of each word of the string
- */
-
-char **split_str_to_arr(char *line)
-{
-	char **tokens_list;
-	char *token, *comment;
-	int i = 0, num = 0;
-
-	comment = _strchr(line, '#');
-	if (comment != NULL)
-		*comment = '\0';
-	while (line[i])
-	{
-		if ((line[i] == ' ' && line[i + 1] != ' ') || line[i] == '\n')
-			num++;
-		i++;
-	}
-	tokens_list = malloc((num + 1) * sizeof(char *));
-	token = _strtok(line, " \n");
-	i = 0;
-	while (token)
-	{
-		tokens_list[i] = malloc((_strlen(token) + 1) * sizeof(char));
-		if (!tokens_list)
-		{
-			exit(-1);
-		}
-		_strcpy(tokens_list[i], token);
-		token = _strtok(NULL, " \n");
-		i++;
-	}
-	tokens_list[i] = token;
-	return (tokens_list);
 }
