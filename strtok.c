@@ -38,8 +38,7 @@ char	*_strtok(char *str, char *delims)
 				duplicated[i] = '\0';
 				found = 1;
 				track = i + 1;
-				if (!delims[j + 1] &&
-						duplicated[i] != delims[j])
+				if (!delims[j + 1] && duplicated[i] != delims[j])
 				break;
 			}
 		}
