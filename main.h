@@ -45,7 +45,7 @@ typedef	struct	linked
 int		execute_command(char *argv[]);
 void		free_all(char *line, char **tokens_list);
 char		*_getenv(const char *key);
-char		**dup_environ();
+char		**dup_environ(void);
 void		*_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void		create_linkedlist(void);
 void		free_list(linked *h);
@@ -61,6 +61,7 @@ int		builtin_exec2(char **args);
 char		*_memcpy(char *dest, char *src, unsigned int n);
 void		printenv(void);
 int		_putchar(char c);
+int		_putchar_err(char c);
 void		print_number(int n);
 void		print_error(char **commandline, char *command, int error);
 void		write_program_name(char *program_name);

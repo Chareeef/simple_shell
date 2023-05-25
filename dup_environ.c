@@ -5,7 +5,7 @@
  *
  * Return: pointer to duplicated environ
  */
-char **dup_environ()
+char **dup_environ(void)
 {
 	char **new_environ;
 	int i;

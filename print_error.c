@@ -27,13 +27,13 @@ void print_error(char **commandline, char *command, int error)
 	{
 		write_error(illegal_num);
 		write_error(commandline[1]);
-		_putchar('\n');
+		_putchar_err('\n');
 	}
 	else if (error == 3)
 	{
 		write_error(cd_error);
 		write_error(commandline[1]);
-		_putchar('\n');
+		_putchar_err('\n');
 	}
 	count_error++;
 }

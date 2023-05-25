@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_number - prints an integer with _putchar
+ * print_number - prints an integer with _putchar_err
  * @n: our integer
  *
  * Return: void
@@ -12,7 +12,7 @@ void print_number(int n)
 
 	if (n < 0 && n != INT_MIN)
 	{
-		_putchar('-');
+		_putchar_err('-');
 		n = -n;
 	}
 
@@ -24,17 +24,17 @@ void print_number(int n)
 
 	while (d > 0 && n > 0)
 	{
-		_putchar(l + '0');
+		_putchar_err(l + '0');
 		l = (n / d) % 10;
 		d /= 10;
 	}
 
 	if (n != INT_MIN)
-		_putchar(n % 10 + '0');
+		_putchar_err(n % 10 + '0');
 
 	if (n == INT_MIN)
 	{
-		_putchar('-');
+		_putchar_err('-');
 		print_number((INT_MIN / 100) * -1);
 		print_number((INT_MIN % 100) * -1);
 	}
